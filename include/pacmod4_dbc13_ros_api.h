@@ -48,16 +48,16 @@ public:
   std::shared_ptr<void> ParseCmdLimitRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseComponentRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseDateTimeRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseDifferentialLocksRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseDetectedObjectRpt(const cn_msgs::Frame& can_msg) override;
+  std::shared_ptr<void> ParseDifferentialLocksRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseDoorRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseDrivetrainFeatureRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseEStopRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseEngineAuxRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseEngineAuxRpt2(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseEngineLoadFactorRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseEngineBrakeAuxRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseEngineBrakeRpt(const cn_msgs::Frame& can_msg) override;
+  std::shared_ptr<void> ParseEngineLoadFactorRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseFireSuppressionRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseGlobalRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseGlobalRpt2(const cn_msgs::Frame& can_msg) override;
@@ -72,7 +72,6 @@ public:
   std::shared_ptr<void> ParseNotificationRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseOccupancyRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseParkingBrakeAuxRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseSystemRptBoolWithControlStatus(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseRearLightsRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseRemoteStopRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSafetyFuncCriticalStopRpt(const cn_msgs::Frame& can_msg) override;
@@ -86,6 +85,7 @@ public:
   std::shared_ptr<void> ParseSteeringRpt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSupervisoryCtrl(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSystemRptBool(const cn_msgs::Frame& can_msg) override;
+  std::shared_ptr<void> ParseSystemRptBoolWithControlStatus(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSystemRptFloat(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSystemRptInt(const cn_msgs::Frame& can_msg) override;
   std::shared_ptr<void> ParseSystemRptIntWithControlStatus(const cn_msgs::Frame& can_msg) override;
