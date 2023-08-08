@@ -37,7 +37,7 @@ std::shared_ptr<void> Dbc13Api::ParseAccelAuxRpt(const cn_msgs::Frame& can_msg)
   Unpack_ACCEL_AUX_RPT_pacmod13(&parsed_rpt, static_cast<const uint8_t*>(&can_msg.data[0]), static_cast<uint8_t>(can_msg.dlc));
 
   new_msg->operator_interaction = parsed_rpt.OPERATOR_INTERACTION;
-  new_msg->accel_limiting_active = parsed_rpt.OPERATOR_INTERACTION;
+  new_msg->accel_limiting_active = parsed_rpt.ACCEL_LIMITING_ACTIVE;
   new_msg->park_brake_interlock_active = parsed_rpt.PRK_BRK_INTERLOCK_ACTIVE;
   new_msg->brake_interlock_active = parsed_rpt.BRAKE_INTERLOCK_ACTIVE;
 
@@ -409,8 +409,8 @@ std::shared_ptr<void> Dbc13Api::ParseEngineAuxRpt(const cn_msgs::Frame& can_msg)
   new_msg->engine_coolant_temp_avail = parsed_rpt.ENGINE_COOLANT_TEMP_AVAIL;
   new_msg->fuel_level_avail = parsed_rpt.FUEL_LEVEL_AVAIL;
   new_msg->diesel_exhaust_fluid_level_avail = parsed_rpt.DIESEL_EXHAUST_FLUID_LEVEL_AVAIL;
-  new_msg->fuel_level = parsed_rpt.FUEL_LEVEL_AVAIL;
-  new_msg->diesel_exhaust_fluid_level = parsed_rpt.DIESEL_EXHAUST_FLUID_LEVEL_AVAIL;
+  new_msg->fuel_level = parsed_rpt.FUEL_LEVEL_phys;
+  new_msg->diesel_exhaust_fluid_level = parsed_rpt.DIESEL_EXHAUST_FLUID_LEVEL_phys;
 
   return new_msg;
 }
