@@ -18,33 +18,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef PACMOD3_DBC7_ROS_API_H
-#define PACMOD3_DBC7_ROS_API_H
-
-#include "pacmod3_dbc6_ros_api.h"
+#include "pacmod4_dbc_ros_api.h"
 
 #include <string>
-#include <vector>
-#include <memory>
-#include <mutex>
 
-namespace pacmod3_common
+namespace pacmod4_common
 {
 
-// Derived from previous DBC API version
-// The only overridden functions that exist here are due to changes to those msg types relative to the previous DBC version.
-class Dbc7Api : public Dbc6Api
+uint32_t DbcApi::GetDbcVersion()
 {
-public:
-  explicit Dbc7Api(uint32_t version = 7):Dbc6Api(version){};
-  virtual ~Dbc7Api() = default;
+  return dbc_major_version_;
+}
 
-  std::shared_ptr<void> ParseComponentRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseGlobalRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseInteriorLightsRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseShiftAuxRpt(const cn_msgs::Frame& can_msg) override;
-  std::shared_ptr<void> ParseSteeringAuxRpt(const cn_msgs::Frame& can_msg) override;
-};
-}  // namespace pacmod3_common
+void DbcApi::PrintParseError(const std::string& msg_type)
+{
+  std::string full_msg = "Unable to parse " + msg_type + ", it is not supported by DBC version " + std::to_string(dbc_major_version_);
 
-#endif  // PACMOD3_DBC7_ROS_API_H
+  #if ROS_VERSION==1
+    ROS_WARN_STREAM(full_msg);
+  #elif ROS_VERSION==2
+
+  #endif
+}
+
+void DbcApi::PrintEncodeError(const std::string& msg_type)
+{
+  std::string full_msg = "Unable to encode " + msg_type + ", it is not supported by DBC version " + std::to_string(dbc_major_version_);
+
+  #if ROS_VERSION==1
+    ROS_WARN_STREAM(full_msg);
+  #elif ROS_VERSION==2
+
+  #endif
+}
+
+}  // namespace pacmod4_common
